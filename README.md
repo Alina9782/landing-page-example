@@ -10,7 +10,15 @@ Webpack-built static front-end (HTML, SCSS, vanilla JS). The checked-in variant 
 ## Setup
 
 ```bash
+git clone <repository-url>
+cd Ingloo
 npm install
+```
+
+For a clean install that matches CI (recommended before releases):
+
+```bash
+npm ci
 ```
 
 ## Commands
@@ -35,3 +43,9 @@ npx webpack --mode production --env location=src/YOUR_VARIANT
 - `src/US/` — US market source (`index.html`, `index.js`, `js/`, `styles/`, `assets/`)
 - `webpack.config.js` — entry, copy, and production inline/minify behavior
 - `dist/` — build output (ignored in git; regenerate with `npm run build`)
+
+## Continuous integration
+
+Pushes and pull requests to `main` or `master` run `npm ci` and `npm run build` (see `.github/workflows/ci.yml`). Use the same commands locally when verifying a change before merge.
+
+Node version for local development is pinned in `.nvmrc` (optional: `nvm use`).
