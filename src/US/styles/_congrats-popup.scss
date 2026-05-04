@@ -1,0 +1,131 @@
+@import '_functions';
+
+@keyframes popup-bg-anim {
+	from {
+		background-color: transparent;
+	}
+
+	to {
+		background-color: var(--popup-background-color);
+	}
+}
+
+@keyframes opacity-anim {
+	0% {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+
+	50% {
+		transform: scale(1.015);
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+
+	height: 100vh;
+	height: 100dvh;
+	width: 100%;
+
+	/* Transparent bgc before anim starts */
+	background-color: transparent;
+	animation-name: popup-bg-anim;
+	animation-duration: var(--popup-open-duration);
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+	--popup-open-duration: 0.45s;
+	--popup-close-duration: 0.3s;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&__body {
+		overflow-y: auto;
+		background-color: white;
+		color: var(--text-color-primary);
+
+		/* Opacity=0 before anim starts */
+		opacity: 0;
+		animation-name: opacity-anim;
+		animation-duration: var(--popup-open-duration);
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-in-out;
+
+		// background-color: rgba(90, 90, 90, 0.2);
+		// backdrop-filter: blur(calc(var(--popup-blur) * 0.5));
+		// -webkit-backdrop-filter: blur(calc(var(--popup-blur) * 0.5));
+
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: rem(24);
+	}
+}
+
+.congrats-popup {
+	width: clamp(200px, rem(616), calc(100vw - 20px * 2));
+	padding: clamp(1rem, calc(0.12rem + 3.76vw), 2.75rem); // 16-44 | 375-1120
+	border-radius: rem(5);
+	gap: rem(16);
+	align-items: center;
+
+	& > img {
+		align-self: center;
+		max-width: 100%;
+		max-height: 30vh;
+		max-height: 30dvh;
+	}
+
+	&__head {
+		width: 100%;
+		padding: rem(12) 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// border-bottom: rem(1) solid rgba(243, 243, 243, 1);
+
+		.header__body {
+			padding: 0;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: rem(16);
+
+		h3 {
+			font-size: clamp(1.25rem, calc(1.12rem + 0.53vw), 1.5rem); // 20-24 | 390-1140
+			line-height: 1.2;
+		}
+
+		h4.mini-mb {
+			font-size: clamp(0.88rem, calc(0.81rem + 0.27vw), 1rem); // 14-16 | 390-1140
+			line-height: 1.4;
+
+			margin-bottom: 0.5em;
+		}
+
+		ol {
+			& > *:not(:last-child) {
+				margin-bottom: 1em;
+			}
+
+			li {
+				font-size: rem(12);
+				line-height: 1.618;
+			}
+		}
+	}
+}

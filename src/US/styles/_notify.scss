@@ -1,0 +1,208 @@
+.notifications {
+	position: fixed;
+	top: 1.5%;
+	right: 1%;
+	width: clamp(300px, 360px, calc(100vw - 30px));
+	z-index: 99;
+	overflow: hidden;
+
+	&__items {
+		list-style-type: none;
+		margin: 0;
+		padding: 5px;
+	}
+
+	&__item {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		background-color: #fff;
+		border-radius: 10px;
+		border: 1px solid #e2dede;
+		padding: 10px 6px;
+		margin-top: 5px;
+	}
+
+	&__item__content__header {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 5px;
+		line-height: 1;
+		margin-bottom: 5px;
+	}
+
+	&__item__img {
+		width: 70px;
+		min-width: 70px;
+		margin: 0 10px;
+		border: none;
+		outline: none;
+
+		img {
+			width: 100%;
+			height: 100%;
+			-o-object-fit: contain;
+			object-fit: contain;
+		}
+	}
+
+	&__item__content {
+		padding: 0 5px;
+	}
+
+	&__item__content__header {
+		font-size: 11px;
+	}
+
+	&__item-name {
+		font-weight: bold;
+	}
+
+	&__item-address {
+		text-decoration: underline;
+	}
+
+	&__item__content__desc {
+		font-size: 16px;
+		font-weight: 500;
+		color: #134094;
+	}
+
+	&__item__content__bottom {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	&__item__time {
+		font-size: 13px;
+	}
+
+	&__item__icons {
+		position: relative;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		margin-left: 10px;
+		width: 15px;
+		height: 15px;
+
+		img {
+			position: absolute;
+			margin-right: 10px;
+			width: 15px;
+			height: 15px;
+			-webkit-animation: checIn 3s cubic-bezier(1, -1.23, 0.49, 1.56);
+			animation: checIn 3s cubic-bezier(1, -1.23, 0.49, 1.56);
+		}
+	}
+
+	&__item__btn {
+		margin: 0 10px 0 5px;
+	}
+
+	&__item__btn-close {
+		vertical-align: inherit;
+	}
+}
+
+.hiddenNoty {
+	animation-name: hiddenNoty;
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	-webkit-animation-name: hiddenNoty;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-timing-function: linear;
+}
+
+.showNoty {
+	animation-name: showNoty;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	-webkit-animation-name: showNoty;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes checIn {
+	0% {
+		top: 50px;
+	}
+
+	100% {
+		top: 0px;
+	}
+}
+
+@keyframes checIn {
+	0% {
+		top: 50px;
+	}
+
+	100% {
+		top: 0px;
+	}
+}
+
+@-webkit-keyframes hiddenNoty {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes hiddenNoty {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes showNoty {
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes showNoty {
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

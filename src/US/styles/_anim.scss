@@ -1,0 +1,136 @@
+:root {
+	--anim-delay-time: 150ms;
+	--anim-duration-short: 0.45s;
+	--anim-duration-long: 0.6s;
+}
+
+@keyframes ltr-slide-anim {
+	from {
+		transform: translateX(-30%);
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+
+.ltr-slide-anim {
+	transform: translateX(-50%);
+	opacity: 0;
+
+	animation-name: ltr-slide-anim;
+	animation-duration: var(--anim-duration-short);
+	animation-delay: calc(var(--anim-order) * var(--anim-delay-time));
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+@keyframes reveal-anim {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.reveal-anim {
+	opacity: 0;
+
+	animation-name: reveal-anim;
+	animation-duration: var(--anim-duration-long);
+	animation-delay: calc(var(--anim-order) * var(--anim-delay-time));
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+@keyframes scale-anim {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	60% {
+		transform: scale(1.05);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.scale-anim {
+	opacity: 0;
+	transform: scale(0);
+
+	animation-name: scale-anim;
+	animation-duration: var(--anim-duration-short);
+	animation-delay: calc(var(--anim-order) * var(--anim-delay-time));
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+@keyframes fade-in-anim {
+	from {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+
+	to {
+		transform: translate(0, 0);
+		opacity: 0;
+	}
+}
+
+/* Aditional class "once" disable block's repeat animation
+ when .wrapper gots .close-anim */
+body.close-anim .scale-anim:not(.once),
+body.close-anim .reveal-anim:not(.once),
+body.close-anim .ltr-slide-anim:not(.once),
+body.close-anim .loading,
+.home.close-anim,
+.loading.close-anim,
+.product-page.close-anim,
+.congrats-page.close-anim,
+.main > *.close-anim {
+	animation-name: fade-in-anim;
+	animation-duration: 0.6s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+*._heart-beat-anim {
+	animation: heart-beat 3s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	14% {
+		-webkit-transform: scale(1.15);
+		transform: scale(1.15);
+	}
+	28% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	42% {
+		-webkit-transform: scale(1.15);
+		transform: scale(1.15);
+	}
+	70% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
