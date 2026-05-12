@@ -34,6 +34,23 @@ The default project root is `src/US`. To build another folder that follows the s
 npx webpack --mode production --env location=src/YOUR_VARIANT
 ```
 
+## Deploy on Vercel (from GitHub)
+
+The repo includes [`vercel.json`](vercel.json) so Vercel does not need manual build overrides:
+
+- **Install:** `npm ci`
+- **Build:** `npm run build`
+- **Output:** `dist`
+
+Steps:
+
+1. Push this repository to GitHub (including `vercel.json` and `package-lock.json`).
+2. In the [Vercel dashboard](https://vercel.com/new), choose **Add New… → Project** and **Import** your GitHub repository.
+3. Grant Vercel access to the org/repo if prompted. Vercel will read `vercel.json`; you usually do not need to change Framework, Build, or Output settings.
+4. Click **Deploy**. Every later push to the connected branch triggers a new deployment.
+
+Optional: set **Project → Settings → General → Node.js Version** to **20.x** to align with `.nvmrc`.
+
 ## Deploy notes
 
 `src/US/index.html` contains tracker placeholders such as `{trackingdomain}` and `{click.id}`. Replace or inject these in your hosting or CI pipeline so `fetch` and redirects target your real endpoints.
